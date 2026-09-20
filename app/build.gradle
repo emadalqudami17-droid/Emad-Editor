@@ -53,5 +53,7 @@ dependencies {
         exclude group: 'org.codehaus.woodstox', module: 'stax2-api'
     }
 
-    implementation 'com.fasterxml:aalto-xml:1.0.0'
+    implementation('com.fasterxml:aalto-xml:1.2.2') {
+        exclude group: 'org.codehaus.woodstox', module: 'stax2-api'
+    }
 }
