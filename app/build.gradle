@@ -36,7 +36,8 @@ android {
                 'META-INF/LICENSE.txt',
                 'META-INF/NOTICE',
                 'META-INF/NOTICE.txt',
-                'META-INF/INDEX.LIST'
+                'META-INF/INDEX.LIST',
+                'META-INF/services/javax.xml.stream.XMLInputFactory'
             ]
         }
     }
@@ -47,6 +48,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.material:material:1.12.0'
 
-    // POI comes with Aalto XML shaded inside - no need for external aalto-xml
-    implementation 'com.github.SUPERCILEX.poi-android:poi:3.17'
+    implementation('com.github.SUPERCILEX.poi-android:poi:3.17') {
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'org.codehaus.woodstox', module: 'stax2-api'
+    }
+
+    implementation('com.fasterxml:aalto-xml:1.0.0') {
+        exclude group: 'org.codehaus.woodstox', module: 'stax2-api'
+    }
 }
